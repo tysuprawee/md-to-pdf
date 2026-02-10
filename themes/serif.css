@@ -1,0 +1,38 @@
+:root {
+  --doc-font: Georgia, "Times New Roman", serif;
+  --head-font: "Palatino Linotype", Palatino, serif;
+  --accent: #8a3b12;
+}
+
+.markdown-body {
+  font-family: var(--doc-font);
+  line-height: 1.68;
+  font-size: 12pt;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4 {
+  font-family: var(--head-font);
+  color: #5a220d;
+}
+
+.markdown-body h1 {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.markdown-body h2 {
+  border-bottom: 1px solid #e7d8cc;
+  padding-bottom: 0.2rem;
+}
+
+.markdown-body code {
+  background: #fbf3ee;
+}
+
+.markdown-body pre {
+  border: 1px solid #ead9ce;
+  border-radius: 8px;
+}

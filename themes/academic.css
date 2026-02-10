@@ -1,0 +1,41 @@
+:root {
+  --doc-font: Cambria, Georgia, serif;
+  --head-font: Cambria, Georgia, serif;
+  --accent: #0a4f4f;
+}
+
+.markdown-body {
+  font-family: var(--doc-font);
+  line-height: 1.58;
+  font-size: 11pt;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4 {
+  font-family: var(--head-font);
+  color: #0c3d3d;
+}
+
+.markdown-body h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 1.85rem;
+}
+
+.markdown-body h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #cfe3e3;
+  padding-bottom: 0.2rem;
+}
+
+.markdown-body table th {
+  background: #edf7f7;
+}
+
+.markdown-body .katex-display {
+  margin: 1.25rem 0;
+}

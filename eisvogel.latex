@@ -1,0 +1,6 @@
+$tplDir = Join-Path $env:APPDATA "pandoc\templates"
+New-Item -ItemType Directory -Force $tplDir | Out-Null
+
+Invoke-WebRequest `
+  -Uri "https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.latex" `
+  -OutFile (Join-Path $tplDir "eisvogel.latex")

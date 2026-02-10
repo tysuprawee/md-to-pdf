@@ -1,0 +1,75 @@
+# md2pdf command cheat sheet
+# Always run with `node` in PowerShell:
+# good: node .\src\cli.js ...
+# bad:  .\src\cli.js ...
+
+# 0) Install deps once
+npm install
+
+# 1) Basic PDF (default theme: clean)
+node .\src\cli.js --input .\input.md --output .\output.pdf --theme clean
+
+# 2) All themes
+node .\src\cli.js --input .\input.md --output .\output-clean.pdf --theme clean
+node .\src\cli.js --input .\input.md --output .\output-serif.pdf --theme serif
+node .\src\cli.js --input .\input.md --output .\output-academic.pdf --theme academic
+node .\src\cli.js --input .\input.md --output .\output-dark.pdf --theme github-dark
+
+# 3) Header/footer + page numbers
+# OFF by default
+# turn ON:
+node .\src\cli.js --input .\input.md --output .\output-hf.pdf --theme clean --header-footer
+
+# with title in header:
+node .\src\cli.js --input .\input.md --output .\output-hf-title.pdf --theme clean --header-footer --title "My Project Report"
+
+# turn OFF explicitly:
+node .\src\cli.js --input .\input.md --output .\output-nohf.pdf --theme clean --no-header-footer
+
+# 4) Custom academic-style header/footer (like your screenshot)
+# Available placeholders in header/footer text:
+# {title} = document title
+# {page}  = current page number
+# {total} = total pages
+# {date}  = print date
+node .\src\cli.js --input .\input.md --output .\output-lab-style.pdf --theme clean --header-footer --title "RISC-V Lab" --header-left "RISC-V R, I, and U-Type Lab" --header-center "Due: Oct 13 2023" --header-right "CSCE611: Advanced Digital Design" --footer-left "Copyright 2021 Charles Daniels, Jason Bakos" --footer-right "{page}"
+
+# 5) Title metadata only (no visible header/footer)
+node .\src\cli.js --input .\input.md --output .\output-title.pdf --title "My Project Report"
+
+# 6) Table of contents support
+# Add [TOC] in markdown where you want the TOC block.
+# TOC is ON by default. Turn OFF with:
+node .\src\cli.js --input .\input.md --output .\output-notoc.pdf --no-toc
+
+# 7) Paper size + margins
+node .\src\cli.js --input .\input.md --output .\output-a4.pdf --paper A4 --margin 12mm
+node .\src\cli.js --input .\input.md --output .\output-letter.pdf --paper Letter --margin 16mm
+
+# Note:
+# github-dark uses edge-to-edge default when header/footer is OFF,
+# so it avoids the white border look.
+# If you explicitly pass --margin, your value is used.
+
+# 8) Local image base directory (if images are relative paths)
+node .\src\cli.js --input .\docs\guide.md --output .\docs\guide.pdf --basedir .\docs
+
+# 9) Extra custom CSS override
+node .\src\cli.js --input .\input.md --output .\output-custom.pdf --theme clean --css .\gh-print.css
+
+# 10) Live preview web UI
+npm run preview
+# open http://localhost:3000
+
+# In preview UI:
+# - Load a file
+# - edit markdown live
+# - switch theme/paper/margin
+# - toggle TOC and Header/Footer
+# - export PDF
+
+# 11) Quick npm shortcuts
+npm run build:sample
+npm run build:sample:serif
+npm run build:sample:academic
+npm run build:sample:dark

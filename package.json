@@ -1,0 +1,34 @@
+{
+  "name": "docgen-md2pdf",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "bin": {
+    "md2pdf": "./src/cli.js",
+    "md2pdf-preview": "./src/web.js"
+  },
+  "scripts": {
+    "build:sample": "node src/cli.js --input input.md --output input.pdf --theme clean",
+    "build:sample:serif": "node src/cli.js --input input.md --output input-serif.pdf --theme serif",
+    "build:sample:academic": "node src/cli.js --input input.md --output input-academic.pdf --theme academic",
+    "build:sample:dark": "node src/cli.js --input input.md --output input-dark.pdf --theme github-dark",
+    "preview": "node src/web.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "github-markdown-css": "^5.9.0",
+    "highlight.js": "^11.11.1",
+    "katex": "^0.16.28",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-attrs": "^4.3.1",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-deflist": "^3.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-mark": "^4.0.0",
+    "markdown-it-table-of-contents": "^0.5.2",
+    "markdown-it-task-lists": "^2.1.1",
+    "markdown-it-texmath": "^1.0.0",
+    "puppeteer": "^24.37.2"
+  }
+}
