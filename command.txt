@@ -32,7 +32,7 @@ node .\src\cli.js --input .\input.md --output .\output-nohf.pdf --theme clean --
 # {page}  = current page number
 # {total} = total pages
 # {date}  = print date
-node .\src\cli.js --input .\input.md --output .\output-lab-style.pdf --theme clean --header-footer --title "RISC-V Lab" --header-left "RISC-V R, I, and U-Type Lab" --header-center "Due: Oct 13 2023" --header-right "CSCE611: Advanced Digital Design" --footer-left "Copyright 2021 Charles Daniels, Jason Bakos" --footer-right "{page}"
+node .\src\cli.js --input .\input.md --output .\output.pdf --theme clean --header-footer --title "CSCE102" --header-left "LAB 1" --header-center "Due: Nov 29 2026" --header-right "CSCE 102: General Applications Programming" --footer-left "Copyright 2026 Suprawee Pongpeeradech" --footer-right "{page}"
 
 # 5) Title metadata only (no visible header/footer)
 node .\src\cli.js --input .\input.md --output .\output-title.pdf --title "My Project Report"
@@ -73,3 +73,6 @@ npm run build:sample
 npm run build:sample:serif
 npm run build:sample:academic
 npm run build:sample:dark
+
+# 12) HTML Guide (With Page Breaks) - Mac/Linux style
+node src/cli.js --input html.md --output output.pdf --theme clean --header-footer --title "CSCE102" --header-left "LAB 1" --header-right "CSCE 102: General Applications Programming" --footer-left "Copyright 2026 Suprawee Pongpeeradech" --footer-right "{page}" --page-breaks

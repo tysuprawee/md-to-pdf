@@ -169,7 +169,7 @@ function createMarkdownRenderer(withToc) {
   return md;
 }
 
-function loadCssBlocks(extraCssFiles, themeName) {
+function loadCssBlocks(extraCssFiles, themeName, pageBreaks) {
   const theme = resolveTheme(themeName);
   const katexCss = fs.readFileSync(
     path.join(__dirname, '..', 'node_modules', 'katex', 'dist', 'katex.min.css'),
@@ -227,6 +227,7 @@ h1, h2, h3, h4, h5, h6 {
   break-after: avoid-page;
   page-break-after: avoid;
 }
+${pageBreaks ? `.markdown-body h1:not(:first-child) { page-break-before: always; }` : ''}
 pre {
   overflow: auto;
 }
@@ -318,7 +319,7 @@ async function renderMarkdownDocument(options) {
   const title = options.title || extractTitle(markdown, 'Markdown Document');
   const renderedWithPaths = fixHtmlImagePaths(md.render(markdown), basedir);
   const rendered = await inlineImageSources(renderedWithPaths, basedir);
-  const css = loadCssBlocks(options.css || [], options.theme || 'clean');
+  const css = loadCssBlocks(options.css || [], options.theme || 'clean', options.pageBreaks);
   const html = buildHtml(rendered, css, title);
   return { html, title };
 }
@@ -417,6 +418,7 @@ async function renderMarkdownToPdf(options) {
     theme: options.theme,
     css: options.css,
     title: options.title,
+    pageBreaks: options.pageBreaks,
   });
 
   const browser = await puppeteer.launch({ headless: true });

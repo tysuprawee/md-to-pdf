@@ -21,6 +21,7 @@ function parseArgs(argv) {
     footerLeft: '',
     footerCenter: '',
     footerRight: '',
+    pageBreaks: false,
   };
 
   for (let i = 0; i < argv.length; i += 1) {
@@ -42,6 +43,7 @@ function parseArgs(argv) {
     else if (arg === '--no-toc') args.toc = false;
     else if (arg === '--header-footer') args.headerFooter = true;
     else if (arg === '--no-header-footer') args.headerFooter = false;
+    else if (arg === '--page-breaks') args.pageBreaks = true;
     else if (arg === '--help' || arg === '-h') {
       printHelp();
       process.exit(0);
@@ -93,6 +95,7 @@ Options:
       --no-toc               Disable table of contents plugin behavior
       --header-footer        Enable page header/footer with page numbers
       --no-header-footer     Disable page header/footer with page numbers
+      --page-breaks          Force page break before every Level 1 Heading (h1)
   -h, --help                 Show this help
 `);
 }
